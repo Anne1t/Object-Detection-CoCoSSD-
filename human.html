@@ -1,0 +1,66 @@
+<html>
+<head>
+
+	<title>Object Detection - People</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+  <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <br><a style="margin-left: 20px;" href="index.html" class="btn btn-primary">Back</a>
+    <center>
+        <h1 class="heading"> Object Detection - People</h1>
+        <br> <br>
+        <h3 id="status" class="btn btn-primary">Status: </h3>
+    </center>
+</body>
+<script>
+  objectDetector="";
+  img="";
+  objects=[];
+  status="";
+
+  function preload(){
+    img=loadImage("people.jpg");
+  }
+
+  function setup(){
+    canvas=createCanvas(640, 420);
+    canvas.center();
+    objectDetector=ml5.objectDetector("cocossd", modelLoaded);
+    document.getElementById("status").innerHTML="Status: Detecting Objects...";
+  }
+
+  function modelLoaded(){
+    console.log("Model is loaded! 👏🏻");
+    status=true;
+    objectDetector.detect(img, gotResult);
+  }
+  function gotResult(error, results){
+    if(error){
+      console.error(error);
+    }
+    console.log(results);
+    objects=results;
+  }
+
+  function draw(){
+    if(status!=undefined){
+      image(img, 0, 0, 640, 420);
+      for(var i=0; i<objects.length; i++){
+        document.getElementById("status").innerHTML="Status: Objects Detected";
+        fill("red");
+        percent=floor(objects[i].confidence*100);
+        text(objects[i].label+" "+percent+"%", objects[i].x+5, objects[i].y+15);
+        noFill();
+        stroke("red");
+        rect(objects[i].x, objects[i].y, objects[i].width, objects[i].height);
+      }
+    }
+  }
+</script>
+</html>

@@ -1,0 +1,47 @@
+<html>
+<head>
+
+	<title>Object Detection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+  <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body style="background-color: #e4fff8";>
+  <center>
+    <br>
+    <h1>Object Detection</h1>
+    <br>
+    <button id="human" onclick="human()" class="btn btn-primary p">Identification of People</button><br><br>
+    <button id="sports" onclick="sports()" class="btn btn-primary p">Identification in Sports Ground</button><br><br>
+    <button id="office" onclick="office()" class="btn btn-primary p"> Identification in Office</button><br><br>
+    <button id="cafe" onclick="cafe()" class="btn btn-primary p"> Identification in Cafe</button><br><br>
+    <button id="playground" onclick="pg()" class="btn btn-primary p"> Identification in Playground</button><br><br>
+    <button id="road" onclick="road()" class="btn btn-primary p"> Identification in City</button><br><br>
+
+  </center>
+  <script>
+    function human(){
+      window.location="human.html";
+    }
+    function sports(){
+      window.location="bball.html";
+    }
+    function office(){
+      window.location="office.html";
+    }
+    function cafe(){
+      window.location="cafe.html"
+    }
+    function pg(){
+      window.location="pg.html"
+    }
+    function road(){
+      window.location="road.html"
+    }
+  </script>
+</body>
+</html>
